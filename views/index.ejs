@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum</title>
+    <link rel="stylesheet" href="public/style.css">
+    <style>
+        nav {
+            background-color: pink;
+        }
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-top: 100px;
+            padding: 20px;
+            flex-grow: 1;
+            text-align: left;
+        }
+        .post {
+            background-color: rgba(255, 182, 193, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .post h2 {
+            margin-top: 0;
+        }
+        .post p {
+            margin: 10px 0;
+        }
+        .timestamp {
+            font-size: 0.9em;
+            color: #555;
+        }
+        .like-button {
+            background-color: #D8BFD8;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .likes-count {
+            font-size: 0.9em;
+            color: #555;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="https://pluspng.com/img-png/hello-kitty-logo-png-hello-kitty-hd-png-img-transparent-png-image-pngitem-860x976.png" alt="Hello Kitty Logo">
+                Hello Kitty Baking Page
+            </div>
+            <button class="menu-toggle">☰</button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="index.ejs" class="active">Forum</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Willkommen <%= name %>. In diesem Forum kannst du die Backrezepte anderer lesen, aber auch selber deine wunderbaren Rezepte posten oder andere liebe Kommentare verfassen!
+        Beachte aber, dass es Richtlinien bezüglich des Umgangs gibt und hate Kommentare Menschen verletzen können.</h1>
+        <form action="/logout?_method=DELETE" method="POST">
+            <button type="submit" id="logoutbutton">Log Out</button>
+        </form>
+    </main>
+    
+    <main>
+        <h1>Nehme teil beim Backspace <3</h1>
+        <form id="forumForm">
+            <input type="text" id="name" placeholder="Name mit dem du deinen Beitrag veröffentlichen willst" required>
+            <textarea id="message" placeholder="Dein Beitrag" required></textarea>
+            <button type="submit">Posten</button>
+        </form>
+        
+        <div id="posts"></div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        document.getElementById('forumForm').addEventListener('submit', event => {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const message = document.getElementById('message').value;
+
+            axios.post('/forum', { name, message, timestamp: new Date(), likes: 0 })
+                .then(fetchPosts)
+                .catch(console.error);
+
+            document.getElementById('forumForm').reset();
+        });
+
+        function fetchPosts() {
+            axios.get('/forum')
+                .then(response => {
+                    const posts = response.data;
+                    const postsContainer = document.getElementById('posts');
+                    postsContainer.innerHTML = '';
+
+                    posts.forEach((post, index) => {
+                        const postElement = document.createElement('div');
+                        postElement.classList.add('post');
+                        const date = new Date(post.timestamp);
+                        const formattedDate = date.toLocaleDateString('de-DE');
+                        const formattedTime = date.toLocaleTimeString('de-DE');
+                        postElement.innerHTML = `
+                            <strong>${post.name}:</strong> ${post.message}<br>
+                            <span class="timestamp">Gepostet am ${formattedDate} um ${formattedTime}</span>
+                            <button class="like-button" onclick="likePost(${index})">Like</button>
+                            <span class="likes-count">${post.likes} Likes</span>
+                        `;
+                        postsContainer.appendChild(postElement);
+                    });
+                })
+                .catch(console.error);
+        }
+
+        function likePost(index) {
+            axios.post(`/forum/like/${index}`)
+                .then(fetchPosts)
+                .catch(console.error);
+        }
+
+        fetchPosts();
+    </script>
+     <script src="/public/script.js"></script>
+</body>
+</html>

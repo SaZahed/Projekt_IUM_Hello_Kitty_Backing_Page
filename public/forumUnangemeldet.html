@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forum - Login erforderlich</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body, html {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.60),
+		rgba(0, 0, 0, 0.60)),
+		url('https://media1.tenor.com/m/zpSaFE-r8_QAAAAd/ibunwoo-my-melody.gif');
+	background-size: cover;
+	background-position: center;
+	display: flex;
+	height: 100vh;
+	margin: 0;
+}
+
+main {
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	padding: 20px;
+	width: 100%;
+}
+
+.infobox {
+	background-color: rgba(255, 182, 193, 0.2);
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	max-width: 300px;
+}
+
+.infobox p {
+	text-align: left;
+	margin: 0 0 10px 0;
+}
+
+.infobox a {
+	display: inline-block;
+	margin-top: 10px;
+	color: rgb(0, 0, 0) k;
+	text-decoration: none;
+	padding: 5px 10px;
+	background-color: rgba(0, 0, 0, 0.1);
+	border-radius: 5px;
+}
+
+.infobox a:hover {
+	background-color: rgb(128, 128, 192);
+}
+
+:root {
+	--background-color: rgba(0, 0, 0, 0.5);
+	--darker-background-color: #243848;
+	--accent-color: #41DCE1;
+	--text-color: black;
+	--active-link-color: #41DCE1;
+}
+</style>
+</head>
+<body>
+	<header>
+		<nav>
+			<div class="logo">
+				<img
+					src="https://pluspng.com/img-png/hello-kitty-logo-png-hello-kitty-hd-png-img-transparent-png-image-pngitem-860x976.png"
+					alt="Hello Kitty Logo"> Hello Kitty Baking Page
+			</div>
+			<button class="menu-toggle">☰</button>
+			<ul class="nav-links">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="about.html">About</a></li>
+				<li><a href="/login">Login</a></li>
+				<li><a href="forumUnangemeldet.html" class="active">Forum</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<div class="infobox">
+			<p>Für die Teilnahme am Forum, müssen Sie sich einloggen!</p>
+			<a href="/login">Zum Login um teilnehmen zu können :)</a>
+		</div>
+	</main>
+</body>
+<footer> &copy; 2024 Hello Kitty Baking Website. All rights
+	reserved. </footer>
+<script src="script.js"></script>
+</html>

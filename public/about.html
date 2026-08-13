@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us</title>
+<link rel="stylesheet" href="/public/style.css">
+<style>
+body, html {
+	background-size: cover;
+	background-position: center;
+	display: flex;
+}
+
+header {
+	width: 80%;
+}
+
+nav {
+	background-color: pink;
+}
+
+.about-container {
+	background-color: rgba(255, 255, 255, 0.8);
+	border-radius: 10px;
+	padding: 20px;
+	max-width: 800px;
+	margin: 20px auto;
+	text-align: center;
+	color: black;
+}
+
+.about-container h2 {
+	font-size: 36px;
+	margin-bottom: 20px;
+}
+
+.about-container p {
+	font-size: 18px;
+	line-height: 1.6;
+	margin-bottom: 20px;
+}
+
+.gallery {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.gallery img {
+	margin: 10px;
+	border-radius: 8px;
+	width: calc(33% - 20px);
+	height: auto;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@media ( max-width : 768px) {
+	.gallery img {
+		width: calc(50% - 20px);
+	}
+}
+
+@media ( max-width : 480px) {
+	.gallery img {
+		width: 100%;
+	}
+}
+
+main {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 10px;
+	padding: 20px;
+	flex-grow: 1;
+	text-align: center;
+}
+</style>
+</head>
+<body>
+	<header>
+		<h1>About Us</h1>
+		<nav>
+			<div class="logo">
+				<img
+					src="https://pluspng.com/img-png/hello-kitty-logo-png-hello-kitty-hd-png-img-transparent-png-image-pngitem-860x976.png"
+					alt="Hello Kitty Logo"> Hello Kitty Baking Page
+			</div>
+			<button class="menu-toggle">☰</button>
+			<ul class="nav-links">
+				<li><a href="/public/index.html">Home</a></li>
+				<li><a href="about.html" class="active">About</a></li>
+				<li><a href="/login">Login</a></li>
+				<li><a href="forumUnangemeldet.html">Forum</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<div class="about-container">
+			<h2>Unsere Geschichte</h2>
+			<p>Willkommen in der Hello Kitty Backwelt! Unsere Leidenschaft
+				für süße Kreationen und zauberhafte Rezepte begann vor 40 Jahren. In
+				Kooperation mit Sanrio haben wir diese Plattform ins Leben gerufen,
+				um Hello Kitty insperierte Backrezepte mit euch zu teilen.</p>
+			<p>Wir bieten eine Vielzahl von Rezepten, die jeden begeistern
+				werden. Unser Ziel ist es, Freude und Kreativität in jede Küche zu
+				bringen und das mit einfachen Rezepten. Zudem gibt es ein Backforum,
+				in dem ihr euch austauschen könnt :)</p>
+			<h2>Unsere Kreationen</h2>
+			<div class="gallery">
+				<img
+					src="https://i.pinimg.com/736x/fe/9f/ff/fe9fffa2636a91ee6308782bea4b145e.jpg"
+					alt="Cookies"> <img
+					src="https://i.pinimg.com/736x/d6/d6/2e/d6d62e720001037c90de3ab40d5e2ba2.jpg"
+					alt="Kekse"> <img
+					src="https://images.gutefrage.net/media/fragen/bilder/was-braeuchte-ich-fuer-so-einen-kuchen/0_full.jpg?v=1657227665000"
+					alt="Kuchen 1"> <img
+					src="https://i.pinimg.com/originals/3f/65/23/3f65237be23f4ad818f5ae233bb0679e.jpg"
+					alt="Kuchen 2"> <img
+					src="https://i.pinimg.com/736x/a2/15/6c/a2156ce3fe22712408868a5fc48af029.jpg"
+					alt="Schnecken"> <img
+					src="https://image.pixstory.com/optimized/Pixstory-image-165155501687227.png"
+					alt="Guschifill">
+			</div>
+		</div>
+	</main>
+	<footer> &copy; 2024 Hello Kitty Baking Website. All rights
+		reserved. </footer>
+	<script src="/public/script.js"></script>
+</body>
+</html>
