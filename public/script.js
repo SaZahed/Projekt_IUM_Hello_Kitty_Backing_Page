@@ -3,10 +3,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelector('.nav-links');
 
     menuToggle.addEventListener('click', function() {
-        navLinks.classList.toggle('show');
+        navLinks.classList.toggle('show'); // wenn show vohanden dannn entferne, ansonsten füge hinzu
     });
 });
- 
+    //validerung, dass Felder nicht leer bleiben
     const form = document.getElementById('loginForm');
     form.addEventListener('submit', function(event) {
         const email = document.getElementById('email').value;
