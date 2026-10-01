@@ -11,10 +11,11 @@ const flash = require('express-flash');// ermöglicht: Nachrichten an die Benutz
 const session = require('express-session');//ermöglicht die Verwaltung von Sitzungen in Express-Anwendungen.
 const methodOverride = require('method-override');// ermöglicht, HTTP-Methoden wie PUT oder DELETE in Formularen zu benutzen, die normalerweise nur GET und POST unterstützen.
 
-const path = require('path')
+const path = require('path') //nimm den Ordner, in dem server.js liegt, und hänge /public daran
 
-app.use(express.static("."));
+app.use(express.static(".")); //stelle datein aus dem verzeichnis zur verfügung
 
+//methode, die in passport-config aufgerufen wird
 const initializePassport = require('./passport-config');
 initializePassport(
   passport,
@@ -27,16 +28,17 @@ const users = [];
 
 app.set('view engine', 'ejs');
 
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false })); //Middleware sorgt dafür, dass Express Daten aus klassischen HTML-Formularen lesen kann
 app.use(flash())
+//Bei express-session liegen die eigentlichen Session-Daten serverseitig; der Browser bekommt grundsätzlich eine Session-ID im Cookie
 app.use(session({
   secret: process.env.SESSION_SECRET,//Geheimschlüssel zur Signierung der Session-ID-Cookies.
   resave: false,
   saveUninitialized: false //entscheidet, ob Sitzungen gespeichert werden sollen, wenn sie nicht geändert sind.
 }));
 app.use(passport.initialize());
-app.use(passport.session());
-app.use(methodOverride('_method'));
+app.use(passport.session()); //session starten um z.B login status zu speichern
+app.use(methodOverride('_method')); //weitere Methoden verwenden
 
 
 
@@ -60,7 +62,7 @@ app.get('/register', checkNotAuthenticated, (req, res) => { //lädt die Registri
 
 app.post('/register', checkNotAuthenticated, async (req, res) => { //Verarbeitet die Registrierung eines neuen Benutzers.
   try {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    const hashedPassword = await bcrypt.hash(req.body.password, 10); //über req.body user input verarbeiten
     users.push({
       id: Date.now().toString(),
       name: req.body.name,
