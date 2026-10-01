@@ -11,10 +11,25 @@ Die Hello Kitty Baking Website richtet sich an Hobbybäcker und erfahrene Bäcke
 Die Website besteht aus mehreren Bereichen:
 
 * Landingpage
+<img width="1891" height="859" alt="grafik" src="https://github.com/user-attachments/assets/bc8120c9-a25c-4788-85ac-f692ff4866eb" />
+
 * About-Seite
-* Login und Registrierung
+<img width="1893" height="870" alt="grafik" src="https://github.com/user-attachments/assets/97f0e98c-66fa-49af-952a-30f2f2d6b1e3" />
+
+* Login
+<img width="1900" height="868" alt="grafik" src="https://github.com/user-attachments/assets/a3e9e509-4984-4a88-b874-04bcd174a8e9" />
+
+* Registrierung
+<img width="1862" height="866" alt="grafik" src="https://github.com/user-attachments/assets/1143444c-a7b3-412e-b98f-267b082af021" /> 
+
 * Geschütztes Forum für angemeldete Nutzer
+<img width="1914" height="865" alt="grafik" src="https://github.com/user-attachments/assets/6c65768f-17d9-46cb-962f-b48b935d9b01" />
+
+
 * Informationsseite für nicht angemeldete Nutzer
+<img width="1896" height="847" alt="grafik" src="https://github.com/user-attachments/assets/d80be60b-2dea-454a-adab-f4f804bab880" />
+
+
 
 Neben HTML, CSS und JavaScript kommen serverseitig unter anderem **Node.js, Express, EJS und Passport.js** zum Einsatz.
 
